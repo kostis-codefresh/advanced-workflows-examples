@@ -1,0 +1,7 @@
+version: '1.0'
+steps:
+  MyUnitTests:
+    title: Running Unit tests
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - python setup.py test

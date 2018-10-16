@@ -1,0 +1,15 @@
+version: '1.0'
+mode: sequential
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: sample-python-image
+    working_directory: ./
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - python setup.py test
